@@ -18,10 +18,7 @@
     {{-- 1. Menggunakan Blade Component: <x-navbar /> --}}
     <x-navbar />
 
-    {{-- 2. Menggunakan Direktif Blade: @include untuk menyisipkan sub-view banner --}}
-    @include('partials.banner')
-
-    {{-- 3. Area Konten Dinamis menggunakan Direktif @yield --}}
+    {{-- 2. Area Konten Dinamis menggunakan Direktif @yield --}}
     <main class="main-content">
         <div class="container">
             @yield('content')

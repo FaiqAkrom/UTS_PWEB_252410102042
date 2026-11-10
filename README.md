@@ -2,9 +2,6 @@
 
 Aplikasi web simulasi dashboard pengelolaan laundry berbasis **Laravel Murni**, arsitektur **MVC**, **Blade Templating Engine**, dan **Vanilla CSS**.
 
-> **Dokumentasi Lengkap Proyek & Panduan Responsi:**  
-> Silakan baca file [README_ROUTING_CONTROLLER.md](README_ROUTING_CONTROLLER.md) untuk penjelasan mendalam mengenai alur arsitektur, bedah baris kode, kepatuhan batasan UTS, dan panduan menjawab pertanyaan penguji.
-
 ---
 
 ## Penjelasan Singkat

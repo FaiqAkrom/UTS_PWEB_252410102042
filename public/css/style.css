@@ -60,40 +60,6 @@ h1, h2, h3, .font-display {
     z-index: 10;
 }
 
-/* Top Mini Notification Banner (@include demo) */
-.sub-banner {
-    background-color: #ffffff;
-    border-bottom: 1px solid var(--border-color);
-    padding: 8px 0;
-    font-size: 0.8rem;
-    color: var(--text-muted);
-}
-
-.sub-banner .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.sub-banner-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 2px 10px;
-    border-radius: 9999px;
-    background-color: #ecfdf5;
-    color: #065f46;
-    font-weight: 600;
-    font-size: 0.75rem;
-}
-
-.sub-banner-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: #10b981;
-}
-
 /* Header Navbar */
 .navbar {
     background: rgba(255, 255, 255, 0.85);
