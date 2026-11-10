@@ -42,15 +42,15 @@ Menampilkan identitas pengguna yang diteruskan melalui parameter request beserta
 
 ## Ringkasan Fitur & 9 File Wajib
 
-1. `routes/web.php` — Definisi rute GET login, dashboard, pengelolaan, dan profile.
-2. `app/Http/Controllers/PageController.php` — Single controller pemroses request, penyedia array statis, dan deteksi peran dinamis.
-3. `resources/views/layouts/app.blade.php` — Master template layout (`@yield`, `@include`, `<x-component>`).
-4. `resources/views/components/navbar.blade.php` — Komponen navigasi atas dengan indikator aktif & badge user.
-5. `resources/views/components/footer.blade.php` — Komponen footer hak cipta.
-6. `resources/views/login.blade.php` — Form simulasi login pengirim nama via GET query parameter.
-7. `resources/views/dashboard.blade.php` — Sapaan personal dan ringkasan metrik laundry statis.
-8. `resources/views/pengelolaan.blade.php` — Katalog layanan laundry (Cuci Kering, Cuci Setrika, Setrika Saja) dirender via `@foreach`.
-9. `resources/views/profile.blade.php` — Informasi profil pengguna berdasarkan request parameter.
+1. `routes/web.php` : Definisi rute GET login, dashboard, pengelolaan, dan profile.
+2. `app/Http/Controllers/PageController.php` : Single controller pemroses request, penyedia array statis, dan deteksi peran dinamis.
+3. `resources/views/layouts/app.blade.php` : Master template layout (`@yield`, `@include`, `<x-component>`).
+4. `resources/views/components/navbar.blade.php` : Komponen navigasi atas dengan indikator aktif & badge user.
+5. `resources/views/components/footer.blade.php` : Komponen footer hak cipta.
+6. `resources/views/login.blade.php` : Form simulasi login pengirim nama via GET query parameter.
+7. `resources/views/dashboard.blade.php` : Sapaan personal dan ringkasan metrik laundry statis.
+8. `resources/views/pengelolaan.blade.php` : Katalog layanan laundry (Cuci Kering, Cuci Setrika, Setrika Saja) dirender via `@foreach`.
+9. `resources/views/profile.blade.php` : Informasi profil pengguna berdasarkan request parameter.
 
 ---
 
