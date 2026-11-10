@@ -1,4 +1,4 @@
-{{-- Komponen Navbar (Blade Component <x-navbar />) — Spectra Aesthetic --}}
+{{-- Komponen Navbar (Blade Component <x-navbar />) --}}
 @php
     $currentUsername = request('username', session('username', ''));
     $queryParam = $currentUsername ? ['username' => $currentUsername] : [];
@@ -9,11 +9,12 @@
         {{-- Brand Logo --}}
         <a href="{{ route('dashboard', $queryParam) }}" class="nav-brand">
             <div class="brand-icon-box">
-                <span>🫧</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                </svg>
             </div>
             <div style="display: flex; align-items: center;">
                 <span class="brand-title">CleanWash</span>
-                <span class="brand-badge">Spectra Core</span>
             </div>
         </a>
 

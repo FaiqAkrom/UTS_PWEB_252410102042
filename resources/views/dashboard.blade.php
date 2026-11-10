@@ -3,12 +3,10 @@
 @section('title', 'Dashboard Utama')
 
 @section('content')
-{{-- Top Welcome Banner with Spectra Two-Tone Typography & Pastel Gradient Backdrop --}}
+{{-- Top Welcome Banner dengan Warna Penuh (Full-Width Pastel Gradient) --}}
 <div class="dashboard-hero-banner">
-    <div class="dashboard-hero-bg"></div>
-
     <div style="position: relative; z-index: 10; display: flex; flex-direction: column; gap: 8px;">
-        <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 600; color: #52525b;">
+        <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 600; color: #3f3f46;">
             <span style="width: 6px; height: 6px; border-radius: 50%; background-color: #10b981;"></span>
             Ikhtisar Operasional &bull; Periode Aktif
         </div>
@@ -18,7 +16,7 @@
             <span class="focus">{{ $username }}</span>
         </h1>
 
-        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 580px; margin-top: 4px;">
+        <p style="color: #4b5563; font-size: 0.95rem; max-width: 580px; margin-top: 4px;">
             Berikut adalah laporan ringkasan beban cucian dan performa mesin laundry CleanWash hari ini.
         </p>
 
@@ -33,13 +31,16 @@
     </div>
 </div>
 
-{{-- 4 KPI Metric Cards --}}
+{{-- 4 KPI Metric Cards (Bebas Emote, Menggunakan Clean SVG Icons) --}}
 <div class="kpi-grid">
     <div class="kpi-card">
         <div class="kpi-header">
             <span>Total Layanan Aktif</span>
             <div class="kpi-icon-pill" style="background: #ecfdf5; color: #059669;">
-                📋
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                </svg>
             </div>
         </div>
         <div class="kpi-value">{{ $ringkasan['total_layanan'] }} Layanan</div>
@@ -51,9 +52,12 @@
 
     <div class="kpi-card">
         <div class="kpi-header">
-            <span>SEDANG DIPROSES</span>
+            <span>Sedang Diproses</span>
             <div class="kpi-icon-pill" style="background: #f0f9ff; color: #0284c7;">
-                ⏳
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
             </div>
         </div>
         <div class="kpi-value">{{ $ringkasan['pesanan_proses'] }} Antrean</div>
@@ -65,9 +69,12 @@
 
     <div class="kpi-card">
         <div class="kpi-header">
-            <span>SELESAI HARI INI</span>
+            <span>Selesai Hari Ini</span>
             <div class="kpi-icon-pill" style="background: #eff6ff; color: #2563eb;">
-                ✅
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
             </div>
         </div>
         <div class="kpi-value">{{ $ringkasan['pesanan_selesai'] }} Order</div>
@@ -79,9 +86,12 @@
 
     <div class="kpi-card">
         <div class="kpi-header">
-            <span>STATUS OPERASIONAL</span>
+            <span>Status Operasional</span>
             <div class="kpi-icon-pill" style="background: #fff7ed; color: #ea580c;">
-                🏪
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path>
+                    <line x1="12" y1="2" x2="12" y2="12"></line>
+                </svg>
             </div>
         </div>
         <div class="kpi-value" style="font-size: 1.45rem; color: #059669;">
@@ -94,7 +104,7 @@
     </div>
 </div>
 
-{{-- Interactive Spectrum Distribution Visual & Recent Activity Logs --}}
+{{-- Visual Distribusi Beban Cucian & Log Aktivitas --}}
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
     {{-- Left: Spectrum Traffic Bar Visual --}}
     <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-soft);">

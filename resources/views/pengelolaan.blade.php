@@ -4,7 +4,7 @@
 
 @section('content')
 {{-- Header Halaman dengan Tipografi Two-Tone --}}
-<div style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: gap; gap: 16px;">
+<div style="margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
     <div>
         <div style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">
             Katalog Paket & Tarif Resmi
@@ -20,10 +20,13 @@
     </span>
 </div>
 
-{{-- Filter & Search Bar Sederhana --}}
+{{-- Filter & Search Bar Sederhana (Clean SVG, Tanpa Emote) --}}
 <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 12px 18px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-soft);">
-    <div style="display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: var(--text-muted);">
-        <span>🔍</span>
+    <div style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-muted);">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #71717a;">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
         <input 
             type="text" 
             id="service-search-input" 
@@ -74,8 +77,12 @@
 
                 <div style="text-align: right;">
                     <div style="font-size: 0.75rem; font-weight: 600; color: var(--text-muted);">Estimasi</div>
-                    <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-black);">
-                        ⏱️ {{ $item['estimasi'] }}
+                    <div style="font-size: 0.85rem; font-weight: 700; color: var(--text-black); display: flex; align-items: center; justify-content: flex-end; gap: 4px;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #52525b;">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <polyline points="12 6 12 12 16 14"></polyline>
+                        </svg>
+                        <span>{{ $item['estimasi'] }}</span>
                     </div>
                 </div>
             </div>
@@ -83,10 +90,14 @@
     @endforeach
 </div>
 
-{{-- Kotak Keterangan Kepatuhan UTS --}}
+{{-- Kotak Keterangan Kepatuhan UTS (Tanpa Emote) --}}
 <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 18px 22px; margin-top: 32px; box-shadow: var(--shadow-soft);">
     <div style="display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 0.9rem; color: var(--text-black); margin-bottom: 4px;">
-        <span>💡</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: #0284c7;">
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="12" y1="16" x2="12" y2="12"></line>
+            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+        </svg>
         <span>Catatan Akademik & Kepatuhan UTS</span>
     </div>
     <p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
