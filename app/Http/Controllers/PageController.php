@@ -137,8 +137,13 @@ class PageController extends Controller
             $emailPrefix = 'user';
         }
 
+        // Deteksi peran: jika username adalah 'admin', tetapkan sebagai Administrator
+        $role = strtolower($username) === 'admin' 
+            ? 'Administrator / Pengelola Utama' 
+            : 'Operator / Pengguna Simulasi';
+
         $profil = [
-            'role' => 'Operator / Pengguna Simulasi',
+            'role' => $role,
             'email' => $emailPrefix . '@laundry-uts.test',
             'status' => 'Aktif',
             'bergabung_sejak' => 'November 2026',

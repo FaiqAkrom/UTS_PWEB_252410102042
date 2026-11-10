@@ -34,7 +34,7 @@
                     id="username" 
                     name="username" 
                     class="form-input" 
-                    placeholder="Contoh: Budi Santoso atau NIM Anda" 
+                    placeholder="Contoh: admin, Budi Santoso, atau NIM Anda" 
                     required 
                     autocomplete="off"
                     autofocus
