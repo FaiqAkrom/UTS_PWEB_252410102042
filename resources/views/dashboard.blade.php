@@ -181,4 +181,32 @@
         </div>
     </div>
 </div>
+
+{{-- Elemen Desain Signature Spectra Pastel Mesh & Brick Grid (Full Kanan, Kiri, dan Bawah) --}}
+<div class="spectra-mesh-container full-bleed">
+    <!-- Pastel Color Field Blur Backdrop -->
+    <div class="spectra-color-field"></div>
+
+    <!-- Glassmorphic Rounded Brick Grid Tepi-ke-Tepi Layar -->
+    <div style="position: relative; z-index: 10; padding: 10px 0 0;">
+        <div class="spectra-tile-row">
+            @for ($i = 0; $i < 20; $i++)
+                <div class="spectra-tile"></div>
+            @endfor
+        </div>
+        <div class="spectra-tile-row offset">
+            @for ($i = 0; $i < 20; $i++)
+                <div class="spectra-tile"></div>
+            @endfor
+        </div>
+        <div class="spectra-tile-row">
+            @for ($i = 0; $i < 20; $i++)
+                <div class="spectra-tile"></div>
+            @endfor
+        </div>
+    </div>
+
+    <!-- Smooth Top Fade Mask -->
+    <div class="spectra-fade-top"></div>
+</div>
 @endsection

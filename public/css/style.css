@@ -179,7 +179,23 @@ h1, h2, h3, .font-display {
     width: 100%;
 }
 
+/* Full bleed: membentang penuh ke tepi layar kiri, kanan, dan dasar halaman */
+.spectra-mesh-container.full-bleed {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    margin-bottom: -56px;
+    margin-top: 48px;
+    height: 230px;
+}
+
 .spectra-color-field {
+    position: absolute;
+    inset: 0;
+    top: 10px;
     background: linear-gradient(
         90deg,
         rgba(74, 222, 128, 0.7) 0%,
@@ -193,18 +209,20 @@ h1, h2, h3, .font-display {
 }
 
 .spectra-tile-row {
-    display: grid;
-    grid-template-columns: repeat(12, minmax(65px, 1fr));
+    display: flex;
     gap: 8px;
     margin-bottom: 8px;
+    width: 100%;
 }
 
 .spectra-tile-row.offset {
-    transform: translateX(-35px);
+    margin-left: -35px;
     width: calc(100% + 70px);
 }
 
 .spectra-tile {
+    flex: 1 1 0px;
+    min-width: 44px;
     height: 60px;
     border-radius: 12px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.15) 100%);
@@ -221,6 +239,11 @@ h1, h2, h3, .font-display {
 }
 
 .spectra-fade-top {
+    position: absolute;
+    inset: 0;
+    height: 90px;
+    z-index: 15;
+    pointer-events: none;
     background: linear-gradient(180deg, #F8F8F7 10%, rgba(248, 248, 247, 0.7) 50%, rgba(248, 248, 247, 0) 100%);
 }
 

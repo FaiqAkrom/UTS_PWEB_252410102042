@@ -57,30 +57,30 @@
 </div>
 
 {{-- Bottom Signature Pastel Spectrum Mesh & Glassmorphic Offset Brick Grid --}}
-<div class="spectra-mesh-container" style="height: 220px; margin-top: 20px;">
-    <!-- Pastel Color Field Blur -->
-    <div class="spectra-color-field" style="position: absolute; inset: 0; top: 10px;"></div>
+<div class="spectra-mesh-container full-bleed">
+    <!-- Pastel Color Field Blur Backdrop -->
+    <div class="spectra-color-field"></div>
 
-    <!-- Glassmorphic Rounded Brick Grid -->
-    <div style="position: relative; z-index: 10; max-width: 1200px; margin: 0 auto; padding: 12px 10px 0;">
+    <!-- Grid tile glassmorphic tanpa pembatas lebar agar memenuhi kiri-kanan -->
+    <div style="position: relative; z-index: 10; padding: 10px 0 0;">
         <div class="spectra-tile-row">
-            @for ($i = 0; $i < 12; $i++)
+            @for ($i = 0; $i < 20; $i++)
                 <div class="spectra-tile"></div>
             @endfor
         </div>
         <div class="spectra-tile-row offset">
-            @for ($i = 0; $i < 12; $i++)
+            @for ($i = 0; $i < 20; $i++)
                 <div class="spectra-tile"></div>
             @endfor
         </div>
         <div class="spectra-tile-row">
-            @for ($i = 0; $i < 12; $i++)
+            @for ($i = 0; $i < 20; $i++)
                 <div class="spectra-tile"></div>
             @endfor
         </div>
     </div>
 
     <!-- Smooth Top Fade Mask -->
-    <div class="spectra-fade-top" style="position: absolute; inset: 0; height: 90px; z-index: 15; pointer-events: none;"></div>
+    <div class="spectra-fade-top"></div>
 </div>
 @endsection

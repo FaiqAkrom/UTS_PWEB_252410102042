@@ -12,3 +12,4 @@
         Halaman ini membuktikan implementasi konsep pengiriman <strong>Array PHP dari Controller</strong> dan perulangan direktif <strong>Blade <code>@@foreach</code></strong>. Seluruh data disajikan secara <em>read-only</em> tanpa operasi manipulasi basis data (CRUD) sesuai batasan tugas UTS Pemrograman Web.
     </p>
 </div>
+

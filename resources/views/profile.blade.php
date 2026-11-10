@@ -18,15 +18,38 @@
     <div class="profile-cover">
         <div class="spectra-color-field" style="position: absolute; inset: 0; opacity: 0.85;"></div>
         
-        <div style="position: relative; z-index: 10; display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; padding: 12px; opacity: 0.75;">
-            <div style="height: 44px; border-radius: 10px; background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.6);"></div>
-            <div style="height: 44px; border-radius: 10px; background: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.5);"></div>
-            <div style="height: 44px; border-radius: 10px; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.7);"></div>
-            <div style="height: 44px; border-radius: 10px; background: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.6);"></div>
-            <div style="height: 44px; border-radius: 10px; background: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.6);"></div>
-            <div style="height: 44px; border-radius: 10px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5);"></div>
-            <div style="height: 44px; border-radius: 10px; background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.6);"></div>
-            <div style="height: 44px; border-radius: 10px; background: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.7);"></div>
+        {{-- Grid tile mengisi seluruh area cover: position absolute, inset 0, 3 baris tile --}}
+        <div style="position: absolute; inset: 0; z-index: 10; display: grid; grid-template-columns: repeat(9, 1fr); grid-template-rows: repeat(3, 1fr); gap: 6px; padding: 8px; opacity: 0.7;">
+            {{-- Baris 1 --}}
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.6);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.5);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.7);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.6);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.6);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.6);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.7);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.6);"></div>
+            {{-- Baris 2 --}}
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.5);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.7);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.6);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.35); border: 1px solid rgba(255,255,255,0.6);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.7);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.5);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.6);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.7);"></div>
+            {{-- Baris 3 --}}
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.6);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.6);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.55); border: 1px solid rgba(255,255,255,0.7);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.5);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.6);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.5);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.7);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.25); border: 1px solid rgba(255,255,255,0.5);"></div>
+            <div style="border-radius: 8px; background: rgba(255,255,255,0.45); border: 1px solid rgba(255,255,255,0.6);"></div>
         </div>
     </div>
 
