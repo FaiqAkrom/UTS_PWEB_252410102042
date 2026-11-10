@@ -6,19 +6,12 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
-    /**
-     * Menampilkan halaman Login awal.
-     * Tidak memerlukan autentikasi database, hanya form input username.
-     */
+
     public function login()
     {
         return view('login');
     }
 
-    /**
-     * Menampilkan Dashboard utama.
-     * Menerima request parameter 'username' dan menyajikan data ringkasan statis.
-     */
     public function dashboard(Request $request)
     {
         // Ambil input username, hilangkan spasi, fallback ke 'Tamu' jika kosong
@@ -69,10 +62,6 @@ class PageController extends Controller
         return view('dashboard', compact('username', 'ringkasan', 'mingguan', 'aktivitas'));
     }
 
-    /**
-     * Menampilkan halaman Pengelolaan Layanan Laundry.
-     * Menggunakan array data statis lengkap dengan styling aksen untuk dirender di Blade.
-     */
     public function pengelolaan()
     {
         // Array statis daftar layanan laundry beserta class aksen warnanya
@@ -121,10 +110,6 @@ class PageController extends Controller
         return view('pengelolaan', compact('layanan'));
     }
 
-    /**
-     * Menampilkan halaman Profil pengguna.
-     * Menampilkan username yang diteruskan melalui parameter request.
-     */
     public function profile(Request $request)
     {
         // Ambil input username, hilangkan spasi, fallback ke 'Tamu' jika kosong

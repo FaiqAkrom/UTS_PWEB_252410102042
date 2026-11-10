@@ -3,13 +3,6 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes — Laundry Management Dashboard (UTS Pemrograman Web)
-|--------------------------------------------------------------------------
-| Seluruh route mengarah ke PageController sesuai arsitektur MVC murni.
-| Tidak ada operasi CRUD maupun keterlibatan database.
-*/
 
 // Rute Halaman Login (Halaman Awal)
 Route::get('/', [PageController::class, 'login'])->name('login');
