@@ -3,65 +3,195 @@
 @section('title', 'Dashboard Utama')
 
 @section('content')
-<div class="page-header">
-    <h1>Dashboard Operasional Laundry</h1>
-    <p>
-        Selamat datang kembali, <strong>{{ $username }}</strong>! Berikut ringkasan performa laundry hari ini.
-    </p>
+{{-- Top Welcome Banner with Spectra Two-Tone Typography & Pastel Gradient Backdrop --}}
+<div class="dashboard-hero-banner">
+    <div class="dashboard-hero-bg"></div>
+
+    <div style="position: relative; z-index: 10; display: flex; flex-direction: column; gap: 8px;">
+        <div style="display: inline-flex; align-items: center; gap: 8px; font-size: 0.75rem; font-weight: 600; color: #52525b;">
+            <span style="width: 6px; height: 6px; border-radius: 50%; background-color: #10b981;"></span>
+            Ikhtisar Operasional &bull; Periode Aktif
+        </div>
+
+        <h1 class="two-tone-heading" style="font-size: 2.1rem;">
+            <span class="mute">Selamat datang kembali,</span>
+            <span class="focus">{{ $username }}</span>
+        </h1>
+
+        <p style="color: var(--text-muted); font-size: 0.95rem; max-width: 580px; margin-top: 4px;">
+            Berikut adalah laporan ringkasan beban cucian dan performa mesin laundry CleanWash hari ini.
+        </p>
+
+        <div style="margin-top: 16px; display: flex; gap: 10px; flex-wrap: wrap;">
+            <a href="{{ route('pengelolaan', ['username' => $username]) }}" class="btn-black" style="width: auto; padding: 10px 18px; font-size: 0.85rem;">
+                <span>Katalog Layanan &rarr;</span>
+            </a>
+            <a href="{{ route('profile', ['username' => $username]) }}" class="btn-outline">
+                <span>Profil Operator</span>
+            </a>
+        </div>
+    </div>
 </div>
 
-{{-- Grid Metrik Ringkasan Laundry (Data Statis dari PageController) --}}
-<div class="grid-metrics">
-    <div class="metric-card">
-        <div class="metric-icon">📋</div>
-        <div class="metric-info">
-            <h3>Total Layanan</h3>
-            <div class="metric-value">{{ $ringkasan['total_layanan'] }} Layanan</div>
-        </div>
-    </div>
-
-    <div class="metric-card">
-        <div class="metric-icon">⏳</div>
-        <div class="metric-info">
-            <h3>Sedang Diproses</h3>
-            <div class="metric-value">{{ $ringkasan['pesanan_proses'] }} Antrean</div>
-        </div>
-    </div>
-
-    <div class="metric-card">
-        <div class="metric-icon">✅</div>
-        <div class="metric-info">
-            <h3>Selesai Hari Ini</h3>
-            <div class="metric-value">{{ $ringkasan['pesanan_selesai'] }} Order</div>
-        </div>
-    </div>
-
-    <div class="metric-card">
-        <div class="metric-icon">🏪</div>
-        <div class="metric-info">
-            <h3>Status Mesin</h3>
-            <div class="metric-value" style="font-size: 1.25rem; color: var(--success);">
-                {{ $ringkasan['status_operasional'] }}
+{{-- 4 KPI Metric Cards --}}
+<div class="kpi-grid">
+    <div class="kpi-card">
+        <div class="kpi-header">
+            <span>Total Layanan Aktif</span>
+            <div class="kpi-icon-pill" style="background: #ecfdf5; color: #059669;">
+                📋
             </div>
         </div>
+        <div class="kpi-value">{{ $ringkasan['total_layanan'] }} Layanan</div>
+        <div class="kpi-footer">
+            <span style="color: #059669; font-weight: 600;">Paket resmi siap pakai</span>
+            <span>Katalog controller</span>
+        </div>
+    </div>
+
+    <div class="kpi-card">
+        <div class="kpi-header">
+            <span>SEDANG DIPROSES</span>
+            <div class="kpi-icon-pill" style="background: #f0f9ff; color: #0284c7;">
+                ⏳
+            </div>
+        </div>
+        <div class="kpi-value">{{ $ringkasan['pesanan_proses'] }} Antrean</div>
+        <div class="kpi-footer">
+            <span style="color: #0284c7; font-weight: 600;">Mesin cuci beroperasi</span>
+            <span>Estimasi tepat</span>
+        </div>
+    </div>
+
+    <div class="kpi-card">
+        <div class="kpi-header">
+            <span>SELESAI HARI INI</span>
+            <div class="kpi-icon-pill" style="background: #eff6ff; color: #2563eb;">
+                ✅
+            </div>
+        </div>
+        <div class="kpi-value">{{ $ringkasan['pesanan_selesai'] }} Order</div>
+        <div class="kpi-footer">
+            <span style="color: #2563eb; font-weight: 600;">Siap diambil pelanggan</span>
+            <span>Rapi & wangi</span>
+        </div>
+    </div>
+
+    <div class="kpi-card">
+        <div class="kpi-header">
+            <span>STATUS OPERASIONAL</span>
+            <div class="kpi-icon-pill" style="background: #fff7ed; color: #ea580c;">
+                🏪
+            </div>
+        </div>
+        <div class="kpi-value" style="font-size: 1.45rem; color: #059669;">
+            {{ $ringkasan['status_operasional'] }}
+        </div>
+        <div class="kpi-footer">
+            <span style="color: #059669; font-weight: 600;">100% Beban Terkendali</span>
+            <span>Simulasi realtime</span>
+        </div>
     </div>
 </div>
 
-{{-- Navigasi Pintasan Cepat --}}
-<div class="section-block">
-    <h2>Aksi Cepat Sistem</h2>
-    <p style="color: var(--text-muted); margin-bottom: 20px;">
-        Pilih modul pengelolaan di bawah untuk melihat rincian katalog layanan atau memeriksa data identitas operator.
-    </p>
+{{-- Interactive Spectrum Distribution Visual & Recent Activity Logs --}}
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
+    {{-- Left: Spectrum Traffic Bar Visual --}}
+    <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-soft);">
+        <div style="margin-bottom: 20px;">
+            <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-black);">
+                Distribusi Beban Cucian Mingguan
+            </h2>
+            <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 2px;">
+                Visualisasi volume cucian berdasarkan paket layanan
+            </p>
+        </div>
 
-    <div style="display: flex; gap: 14px; flex-wrap: wrap;">
-        <a href="{{ route('pengelolaan', ['username' => $username]) }}" class="btn" style="background-color: var(--primary-light); color: var(--primary);">
-            📦 Kelola & Lihat Layanan Laundry &rarr;
-        </a>
-        <a href="{{ route('profile', ['username' => $username]) }}" class="btn" style="background-color: #f1f5f9; color: var(--text-main);">
-            👤 Lihat Profil Saya &rarr;
-        </a>
+        {{-- Bar Grid --}}
+        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; align-items: flex-end; height: 160px; padding-bottom: 12px; border-bottom: 1px solid var(--border-light);">
+            @php
+                $weeklyData = [
+                    ['day' => 'Sen', 'h1' => 60, 'h2' => 80, 'h3' => 45],
+                    ['day' => 'Sel', 'h1' => 75, 'h2' => 90, 'h3' => 55],
+                    ['day' => 'Rab', 'h1' => 85, 'h2' => 70, 'h3' => 65],
+                    ['day' => 'Kam', 'h1' => 65, 'h2' => 85, 'h3' => 50],
+                    ['day' => 'Jum', 'h1' => 95, 'h2' => 90, 'h3' => 80],
+                    ['day' => 'Sab', 'h1' => 80, 'h2' => 75, 'h3' => 70],
+                    ['day' => 'Min', 'h1' => 70, 'h2' => 85, 'h3' => 60],
+                ];
+            @endphp
+
+            @foreach ($weeklyData as $bar)
+                <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+                    <div style="width: 100%; max-width: 30px; display: flex; align-items: flex-end; gap: 3px; height: 120px;">
+                        <div style="flex: 1; height: {{ $bar['h1'] }}%; background: #10b981; border-radius: 4px 4px 0 0;" title="Cuci Kering"></div>
+                        <div style="flex: 1; height: {{ $bar['h2'] }}%; background: #0ea5e9; border-radius: 4px 4px 0 0;" title="Cuci Setrika"></div>
+                        <div style="flex: 1; height: {{ $bar['h3'] }}%; background: #f97316; border-radius: 4px 4px 0 0;" title="Setrika Saja"></div>
+                    </div>
+                    <span style="font-size: 0.75rem; color: var(--text-muted); margin-top: 8px; font-weight: 600;">{{ $bar['day'] }}</span>
+                </div>
+            @endforeach
+        </div>
+
+        {{-- Legend --}}
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; font-size: 0.75rem; color: var(--text-muted);">
+            <span style="display: flex; align-items: center; gap: 6px;">
+                <span style="width: 8px; height: 8px; border-radius: 2px; background: #10b981;"></span> Cuci Kering
+            </span>
+            <span style="display: flex; align-items: center; gap: 6px;">
+                <span style="width: 8px; height: 8px; border-radius: 2px; background: #0ea5e9;"></span> Cuci Setrika
+            </span>
+            <span style="display: flex; align-items: center; gap: 6px;">
+                <span style="width: 8px; height: 8px; border-radius: 2px; background: #f97316;"></span> Setrika Saja
+            </span>
+        </div>
+    </div>
+
+    {{-- Right: Recent Activity Live Log --}}
+    <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
+                <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-black);">
+                    Aktivitas Operasional
+                </h2>
+                <span style="font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 6px; background-color: #f4f4f5; color: #71717a;">
+                    Live Log
+                </span>
+            </div>
+
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981; margin-top: 6px; flex-shrink: 0;"></span>
+                    <div>
+                        <p style="font-size: 0.82rem; font-weight: 600; color: var(--text-black);">Order Cuci Setrika 4kg selesai disetrika uap</p>
+                        <p style="font-size: 0.72rem; color: var(--text-muted);">15 menit yang lalu &bull; Operator Stasiun A</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <span style="width: 8px; height: 8px; border-radius: 50%; background: #0ea5e9; margin-top: 6px; flex-shrink: 0;"></span>
+                    <div>
+                        <p style="font-size: 0.82rem; font-weight: 600; color: var(--text-black);">Pencucian 6kg Cuci Kering masuk mesin pengering</p>
+                        <p style="font-size: 0.72rem; color: var(--text-muted);">40 menit yang lalu &bull; Mesin 03</p>
+                    </div>
+                </div>
+
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <span style="width: 8px; height: 8px; border-radius: 50%; background: #f97316; margin-top: 6px; flex-shrink: 0;"></span>
+                    <div>
+                        <p style="font-size: 0.82rem; font-weight: 600; color: var(--text-black);">Order Setrika Saja 3kg telah diambil oleh pelanggan</p>
+                        <p style="font-size: 0.72rem; color: var(--text-muted);">2 jam yang lalu &bull; Kasir Laundry</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-top: 20px; padding-top: 14px; border-top: 1px solid var(--border-light);">
+            <a href="{{ route('pengelolaan', ['username' => $username]) }}" style="font-size: 0.8rem; font-weight: 600; color: var(--text-black); text-decoration: none; display: flex; align-items: center; justify-content: space-between;">
+                <span>Lihat Katalog Layanan Lengkap</span>
+                <span>&rarr;</span>
+            </a>
+        </div>
     </div>
 </div>
 @endsection
-

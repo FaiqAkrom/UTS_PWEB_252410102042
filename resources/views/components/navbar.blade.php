@@ -1,4 +1,4 @@
-{{-- Komponen Navbar (Blade Component <x-navbar />) --}}
+{{-- Komponen Navbar (Blade Component <x-navbar />) — Spectra Aesthetic --}}
 @php
     $currentUsername = request('username', session('username', ''));
     $queryParam = $currentUsername ? ['username' => $currentUsername] : [];
@@ -6,16 +6,23 @@
 
 <header class="navbar">
     <div class="container">
+        {{-- Brand Logo --}}
         <a href="{{ route('dashboard', $queryParam) }}" class="nav-brand">
-            <span class="brand-icon">🫧</span>
-            <span>CleanWash Dashboard</span>
+            <div class="brand-icon-box">
+                <span>🫧</span>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <span class="brand-title">CleanWash</span>
+                <span class="brand-badge">Spectra Core</span>
+            </div>
         </a>
 
+        {{-- Navigasi Halaman Utama --}}
         <nav>
             <ul class="nav-links">
                 <li>
                     <a href="{{ route('login') }}" class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}">
-                        Login
+                        Masuk
                     </a>
                 </li>
                 <li>
@@ -25,7 +32,7 @@
                 </li>
                 <li>
                     <a href="{{ route('pengelolaan', $queryParam) }}" class="nav-link {{ request()->routeIs('pengelolaan') ? 'active' : '' }}">
-                        Pengelolaan Layanan
+                        Katalog Layanan
                     </a>
                 </li>
                 <li>
@@ -33,13 +40,19 @@
                         Profil
                     </a>
                 </li>
+
+                {{-- User Badge Aktif --}}
                 @if($currentUsername)
                     <li>
-                        <span class="nav-user-badge">👤 {{ $currentUsername }}</span>
+                        <a href="{{ route('profile', $queryParam) }}" class="nav-user-pill" style="text-decoration: none;">
+                            <div class="user-avatar-mini">
+                                {{ strtoupper(substr($currentUsername, 0, 1)) }}
+                            </div>
+                            <span>{{ $currentUsername }}</span>
+                        </a>
                     </li>
                 @endif
             </ul>
         </nav>
     </div>
 </header>
-
