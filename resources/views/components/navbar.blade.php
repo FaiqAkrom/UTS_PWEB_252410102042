@@ -1,7 +1,8 @@
 {{-- Komponen Navbar (Blade Component <x-navbar />) --}}
 @php
-    $currentUsername = request('username', session('username', ''));
-    $queryParam = $currentUsername ? ['username' => $currentUsername] : [];
+    // Ambil parameter username langsung dari request URL
+    $currentUsername = request('username', '');
+    $queryParam = $currentUsername !== '' ? ['username' => $currentUsername] : [];
 @endphp
 
 <header class="navbar">
@@ -47,7 +48,7 @@
                     <li>
                         <a href="{{ route('profile', $queryParam) }}" class="nav-user-pill" style="text-decoration: none;">
                             <div class="user-avatar-mini">
-                                {{ strtoupper(substr($currentUsername, 0, 1)) }}
+                                {{ strtoupper(mb_substr($currentUsername, 0, 1)) }}
                             </div>
                             <span>{{ $currentUsername }}</span>
                         </a>

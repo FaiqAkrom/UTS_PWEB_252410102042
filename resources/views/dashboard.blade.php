@@ -104,7 +104,7 @@
     </div>
 </div>
 
-{{-- Visual Distribusi Beban Cucian & Log Aktivitas --}}
+{{-- Visual Distribusi Beban Cucian & Log Aktivitas (Data dari Controller) --}}
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
     {{-- Left: Spectrum Traffic Bar Visual --}}
     <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-soft);">
@@ -117,30 +117,20 @@
             </p>
         </div>
 
-        {{-- Bar Grid --}}
-        <div style="display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; align-items: flex-end; height: 160px; padding-bottom: 12px; border-bottom: 1px solid var(--border-light);">
-            @php
-                $weeklyData = [
-                    ['day' => 'Sen', 'h1' => 60, 'h2' => 80, 'h3' => 45],
-                    ['day' => 'Sel', 'h1' => 75, 'h2' => 90, 'h3' => 55],
-                    ['day' => 'Rab', 'h1' => 85, 'h2' => 70, 'h3' => 65],
-                    ['day' => 'Kam', 'h1' => 65, 'h2' => 85, 'h3' => 50],
-                    ['day' => 'Jum', 'h1' => 95, 'h2' => 90, 'h3' => 80],
-                    ['day' => 'Sab', 'h1' => 80, 'h2' => 75, 'h3' => 70],
-                    ['day' => 'Min', 'h1' => 70, 'h2' => 85, 'h3' => 60],
-                ];
-            @endphp
-
-            @foreach ($weeklyData as $bar)
-                <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
-                    <div style="width: 100%; max-width: 30px; display: flex; align-items: flex-end; gap: 3px; height: 120px;">
-                        <div style="flex: 1; height: {{ $bar['h1'] }}%; background: #10b981; border-radius: 4px 4px 0 0;" title="Cuci Kering"></div>
-                        <div style="flex: 1; height: {{ $bar['h2'] }}%; background: #0ea5e9; border-radius: 4px 4px 0 0;" title="Cuci Setrika"></div>
-                        <div style="flex: 1; height: {{ $bar['h3'] }}%; background: #f97316; border-radius: 4px 4px 0 0;" title="Setrika Saja"></div>
+        {{-- Bar Grid (Data Mingguan dikirim dari PageController) --}}
+        <div class="chart-bars-wrapper">
+            <div class="chart-bars-grid">
+                @foreach ($mingguan as $bar)
+                    <div style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%;">
+                        <div style="width: 100%; max-width: 30px; display: flex; align-items: flex-end; gap: 3px; height: 120px;">
+                            <div style="flex: 1; height: {{ $bar['h1'] }}%; background: #10b981; border-radius: 4px 4px 0 0;" title="Cuci Kering"></div>
+                            <div style="flex: 1; height: {{ $bar['h2'] }}%; background: #0ea5e9; border-radius: 4px 4px 0 0;" title="Cuci Setrika"></div>
+                            <div style="flex: 1; height: {{ $bar['h3'] }}%; background: #f97316; border-radius: 4px 4px 0 0;" title="Setrika Saja"></div>
+                        </div>
+                        <span style="font-size: 0.75rem; color: var(--text-muted); margin-top: 8px; font-weight: 600;">{{ $bar['day'] }}</span>
                     </div>
-                    <span style="font-size: 0.75rem; color: var(--text-muted); margin-top: 8px; font-weight: 600;">{{ $bar['day'] }}</span>
-                </div>
-            @endforeach
+                @endforeach
+            </div>
         </div>
 
         {{-- Legend --}}
@@ -157,7 +147,7 @@
         </div>
     </div>
 
-    {{-- Right: Recent Activity Live Log --}}
+    {{-- Right: Recent Activity Live Log (Data Aktivitas dikirim dari PageController) --}}
     <div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-lg); padding: 24px; box-shadow: var(--shadow-soft); display: flex; flex-direction: column; justify-content: space-between;">
         <div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px;">
@@ -169,30 +159,17 @@
                 </span>
             </div>
 
+            {{-- Perulangan log aktivitas dari array controller --}}
             <div style="display: flex; flex-direction: column; gap: 14px;">
-                <div style="display: flex; gap: 12px; align-items: flex-start;">
-                    <span style="width: 8px; height: 8px; border-radius: 50%; background: #10b981; margin-top: 6px; flex-shrink: 0;"></span>
-                    <div>
-                        <p style="font-size: 0.82rem; font-weight: 600; color: var(--text-black);">Order Cuci Setrika 4kg selesai disetrika uap</p>
-                        <p style="font-size: 0.72rem; color: var(--text-muted);">15 menit yang lalu &bull; Operator Stasiun A</p>
+                @foreach ($aktivitas as $log)
+                    <div style="display: flex; gap: 12px; align-items: flex-start;">
+                        <span style="width: 8px; height: 8px; border-radius: 50%; background: {{ $log['warna'] }}; margin-top: 6px; flex-shrink: 0;"></span>
+                        <div>
+                            <p style="font-size: 0.82rem; font-weight: 600; color: var(--text-black);">{{ $log['teks'] }}</p>
+                            <p style="font-size: 0.72rem; color: var(--text-muted);">{{ $log['waktu'] }} &bull; {{ $log['sumber'] }}</p>
+                        </div>
                     </div>
-                </div>
-
-                <div style="display: flex; gap: 12px; align-items: flex-start;">
-                    <span style="width: 8px; height: 8px; border-radius: 50%; background: #0ea5e9; margin-top: 6px; flex-shrink: 0;"></span>
-                    <div>
-                        <p style="font-size: 0.82rem; font-weight: 600; color: var(--text-black);">Pencucian 6kg Cuci Kering masuk mesin pengering</p>
-                        <p style="font-size: 0.72rem; color: var(--text-muted);">40 menit yang lalu &bull; Mesin 03</p>
-                    </div>
-                </div>
-
-                <div style="display: flex; gap: 12px; align-items: flex-start;">
-                    <span style="width: 8px; height: 8px; border-radius: 50%; background: #f97316; margin-top: 6px; flex-shrink: 0;"></span>
-                    <div>
-                        <p style="font-size: 0.82rem; font-weight: 600; color: var(--text-black);">Order Setrika Saja 3kg telah diambil oleh pelanggan</p>
-                        <p style="font-size: 0.72rem; color: var(--text-muted);">2 jam yang lalu &bull; Kasir Laundry</p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
 

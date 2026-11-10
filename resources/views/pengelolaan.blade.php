@@ -20,9 +20,9 @@
     </span>
 </div>
 
-{{-- Filter & Search Bar Sederhana (Clean SVG, Tanpa Emote) --}}
-<div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 12px 18px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-soft);">
-    <div style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-muted);">
+{{-- Filter & Search Bar Sederhana (Responsif pada Layar HP) --}}
+<div style="background: #ffffff; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 12px 18px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow-soft); flex-wrap: wrap; gap: 12px;">
+    <div style="display: flex; align-items: center; gap: 10px; font-size: 0.85rem; color: var(--text-muted); flex: 1; min-width: 200px;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="color: #71717a;">
             <circle cx="11" cy="11" r="8"></circle>
             <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
@@ -31,7 +31,7 @@
             type="text" 
             id="service-search-input" 
             placeholder="Cari nama paket atau kategori layanan..." 
-            style="border: none; outline: none; background: transparent; font-size: 0.85rem; width: 280px; color: var(--text-black);"
+            style="border: none; outline: none; background: transparent; font-size: 0.85rem; width: 100%; max-width: 280px; color: var(--text-black);"
             oninput="filterCards()"
         >
     </div>
@@ -41,26 +41,15 @@
     </div>
 </div>
 
-{{-- Rendering Data Statis Layanan Menggunakan Blade @foreach --}}
+{{-- Rendering Data Statis Layanan Menggunakan Blade @foreach (Murni dari Controller) --}}
 <div class="services-catalog-grid" id="services-grid">
-    @php
-        $accentClasses = [
-            1 => ['bar' => 'accent-emerald', 'badge' => 'badge-emerald'],
-            2 => ['bar' => 'accent-sky', 'badge' => 'badge-sky'],
-            3 => ['bar' => 'accent-orange', 'badge' => 'badge-orange'],
-        ];
-    @endphp
-
     @foreach ($layanan as $item)
-        @php
-            $style = $accentClasses[$item['id']] ?? ['bar' => 'accent-emerald', 'badge' => 'badge-emerald'];
-        @endphp
         <article class="service-item-card service-card-element" data-name="{{ strtolower($item['nama']) }}" data-cat="{{ strtolower($item['kategori']) }}">
-            {{-- Top Accent Bar --}}
-            <div class="service-accent-bar {{ $style['bar'] }}"></div>
+            {{-- Top Accent Bar dari Controller --}}
+            <div class="service-accent-bar {{ $item['aksen']['bar'] }}"></div>
 
             <div>
-                <div class="service-badge {{ $style['badge'] }}">
+                <div class="service-badge {{ $item['aksen']['badge'] }}">
                     {{ $item['kategori'] }}
                 </div>
                 <h2 class="service-name">{{ $item['nama'] }}</h2>
@@ -106,6 +95,7 @@
 </div>
 
 <script>
+    // Fitur pencarian sederhana di sisi peramban
     function filterCards() {
         const query = document.getElementById('service-search-input').value.toLowerCase();
         const cards = document.querySelectorAll('.service-card-element');

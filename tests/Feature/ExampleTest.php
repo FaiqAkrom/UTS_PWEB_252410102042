@@ -20,7 +20,7 @@ class ExampleTest extends TestCase
     }
 
     /**
-     * Uji Halaman Dashboard dengan parameter username.
+     * Uji Halaman Dashboard dengan parameter username dan data controller.
      */
     public function test_halaman_dashboard_menerima_username(): void
     {
@@ -28,6 +28,19 @@ class ExampleTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Budi');
         $response->assertSee('Total Layanan');
+        // Pastikan data mingguan dan aktivitas dari controller ter-render
+        $response->assertSee('Distribusi Beban Cucian Mingguan');
+        $response->assertSee('Order Cuci Setrika 4kg selesai disetrika uap');
+    }
+
+    /**
+     * Uji Halaman Dashboard dengan username spasi kosong (fallback 'Tamu').
+     */
+    public function test_halaman_dashboard_fallback_username_kosong(): void
+    {
+        $response = $this->get('/dashboard?username=%20%20%20');
+        $response->assertStatus(200);
+        $response->assertSee('Tamu');
     }
 
     /**
@@ -40,16 +53,28 @@ class ExampleTest extends TestCase
         $response->assertSee('Cuci Kering');
         $response->assertSee('Cuci Setrika');
         $response->assertSee('Setrika Saja');
+        $response->assertSee('accent-emerald');
     }
 
     /**
-     * Uji Halaman Profile menampilkan username.
+     * Uji Halaman Profile menampilkan username dan email fallback.
      */
     public function test_halaman_profile_menampilkan_username(): void
     {
         $response = $this->get('/profile?username=Budi');
         $response->assertStatus(200);
         $response->assertSee('Budi');
+        $response->assertSee('budi@laundry-uts.test');
         $response->assertSee('Operator / Pengguna Simulasi');
+    }
+
+    /**
+     * Uji Halaman Profile dengan username simbol (fallback email 'user').
+     */
+    public function test_halaman_profile_email_fallback_simbol(): void
+    {
+        $response = $this->get('/profile?username=***');
+        $response->assertStatus(200);
+        $response->assertSee('user@laundry-uts.test');
     }
 }

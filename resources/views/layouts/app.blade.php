@@ -30,7 +30,5 @@
 
     {{-- 4. Menggunakan Blade Component: <x-footer /> --}}
     <x-footer />
-
-    @yield('scripts')
 </body>
 </html>

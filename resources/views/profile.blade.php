@@ -33,7 +33,7 @@
     {{-- Avatar Box --}}
     <div class="profile-avatar-outer">
         <div class="profile-avatar-inner">
-            {{ strtoupper(substr($username, 0, 1)) }}
+            {{ strtoupper(mb_substr($username, 0, 1)) }}
         </div>
     </div>
 
