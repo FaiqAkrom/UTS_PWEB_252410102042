@@ -1,4 +1,4 @@
-# UTS Pemrograman Web 2026 — Laundry Management Dashboard (CleanWash)
+# UTS Pemrograman Web 2026 : Laundry Management Dashboard (CleanWash)
 
 Aplikasi web simulasi dashboard pengelolaan laundry berbasis **Laravel Murni**, arsitektur **MVC**, **Blade Templating Engine**, dan **Vanilla CSS**.
 
@@ -43,7 +43,7 @@ Menampilkan identitas pengguna yang diteruskan melalui parameter request beserta
 ## Ringkasan Fitur & 9 File Wajib
 
 1. `routes/web.php` — Definisi rute GET login, dashboard, pengelolaan, dan profile.
-2. `app/Http/Controllers/PageController.php` — Single controller pemroses request dan penyedia array statis.
+2. `app/Http/Controllers/PageController.php` — Single controller pemroses request, penyedia array statis, dan deteksi peran dinamis.
 3. `resources/views/layouts/app.blade.php` — Master template layout (`@yield`, `@include`, `<x-component>`).
 4. `resources/views/components/navbar.blade.php` — Komponen navigasi atas dengan indikator aktif & badge user.
 5. `resources/views/components/footer.blade.php` — Komponen footer hak cipta.
@@ -51,6 +51,15 @@ Menampilkan identitas pengguna yang diteruskan melalui parameter request beserta
 7. `resources/views/dashboard.blade.php` — Sapaan personal dan ringkasan metrik laundry statis.
 8. `resources/views/pengelolaan.blade.php` — Katalog layanan laundry (Cuci Kering, Cuci Setrika, Setrika Saja) dirender via `@foreach`.
 9. `resources/views/profile.blade.php` — Informasi profil pengguna berdasarkan request parameter.
+
+---
+
+## Skenario Pengujian Login & Akun
+
+Karena aplikasi ini bersifat *stateless* tanpa database, Anda dapat menguji beberapa skenario input nama:
+- **`admin`**: Mengenali pengguna sebagai *Administrator / Pengelola Utama* pada halaman profil.
+- **Nama Pribadi / NIM** (misal: `Budi`): Berperan sebagai *Operator / Pengguna Simulasi*.
+- **Spasi / Kosong**: Sistem otomatis menerapkan fallback nama ke `Tamu`.
 
 ---
 
@@ -82,4 +91,4 @@ php artisan serve
 ```
 
 Setelah server aktif, buka peramban web dan akses alamat:
-👉 **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
+ **[http://127.0.0.1:8000](http://127.0.0.1:8000)**
