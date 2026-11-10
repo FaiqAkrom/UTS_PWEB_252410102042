@@ -32,11 +32,11 @@ Menampilkan sapaan personal dinamis, ringkasan kartu metrik performa laundry, da
 
 ### 3. Halaman Pengelolaan Layanan
 Menampilkan katalog paket layanan laundry (Cuci Kering, Cuci Setrika, Setrika Saja) yang dirender dari controller menggunakan `@foreach`.
-![Halaman Pengelolaan Layanan](docs/screenshots/pengelolaan.png)
+![Halaman Pengelolaan Layanan](docs/screenshots/katalog.png)
 
 ### 4. Halaman Profil
 Menampilkan identitas pengguna yang diteruskan melalui parameter request beserta simulasi detail akun.
-![Halaman Profil](docs/screenshots/profile.png)
+![Halaman Profil](docs/screenshots/profil.png)
 
 ---
 
