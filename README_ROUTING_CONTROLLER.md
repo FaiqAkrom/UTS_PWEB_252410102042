@@ -34,7 +34,7 @@ Proyek ini adalah website simulasi antarmuka pengelolaan laundry (**CleanWash Da
 - **Tanpa Database / Migration / Model**: Seluruh persistensi data dinonaktifkan. Data bersumber dari Array PHP statis di Controller.
 - **Tanpa Operasi CRUD**: Tidak ada manipulasi Create, Update, Delete. Hanya penyajian data (Read).
 - **Tanpa Starter Kit**: Tidak menggunakan Laravel Breeze, Jetstream, Filament, atau template dashboard jadi.
-- **Desain Orisinal**: Tampilan dirancang secara khusus menggunakan Vanilla CSS tema *Fresh Laundry* (biru laut, putih bersih, slate modern) dan responsif terhadap perangkat seluler.
+- **Desain Orisinal**: Tampilan dirancang secara khusus mengadopsi estetika *Spectra Pastel Glassmorphism* (latar belakang pastel mesh, glassmorphic brick tiles, tipografi two-tone Plus Jakarta Sans & Inter) dan responsif terhadap perangkat seluler.
 
 ---
 
